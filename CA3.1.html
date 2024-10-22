@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formula 1</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #1c1c1c; 
+      color: white;
+      font-family: 'Courier New', monospace;
+    }
+    nav {
+      background-color: #121212;
+      padding: 30px;
+      position: sticky;
+      top: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      
+
+    }
+    nav a {
+      color: #FF003D; 
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: bold;
+      font-size: 35px; 
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .hero {
+      position: relative;
+      height: 70vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 0%;
+    }
+
+    .hero h1 {
+      font-size: 60px;
+      text-align: center;
+      text-shadow: 1px 1px 10px rgba(255, 255, 255, 0.8);
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    .cards {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      padding: 40px;
+    }
+
+    .card {
+      background-color: #2c2c2c;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 15px;
+      width: 300px;
+      text-align: center;
+      transition: transform 0.2s;
+      cursor: pointer; 
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .popup-content {
+      background-color: #2c2c2c;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      color: white;
+    }
+
+    .popup img {
+      width: 80%; 
+      margin: 10px 0; 
+      border-radius: 5px;
+    }
+
+    /* Close Button */
+    .close-btn {
+      background-color: #FF003D;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="CA3.1.html">HOME</a>
+    <a href="CA3.2.html">LIVE LEADERBOARD</a>
+    <a href="CA3.3.html">FIA</a>
+    <a href="CA3.4.html">RACE CALENDAR</a>
+  </nav>
+  <div class="hero">
+    <video autoplay muted loop>
+      <source src="The 2024 F1 Opening Titles!.mp4" type="video/mp4">
+    </video>
+    <h1>FORMULA 1</h1>
+  </div>
+  <section class="cards">
+    <div class="card" onclick="document.getElementById('popup-ferrari').style.display='flex'">
+      <img src="fer.png" alt="Ferrari">
+      <h2>Ferrari</h2>
+      <p>The passion, precision, and power of the Prancing Horse.</p>
+    </div>
+    <div class="card" onclick="document.getElementById('popup-mercedes').style.display='flex'">
+      <img src="mec.jpg" alt="Mercedes">
+      <h2>Mercedes</h2>
+      <p>Home of speed and innovation in Formula 1.</p>
+    </div>
+    <div class="card" onclick="document.getElementById('popup-redbull').style.display='flex'">
+      <img src="rb.jpg" alt="Red Bull Racing">
+      <h2>Red Bull Racing</h2>
+      <p>Performance at the edge of possibility.</p>
+    </div>
+    <div class="card" onclick="document.getElementById('popup-mclaren').style.display='flex'">
+      <img src="mc.jpg" alt="McLaren">
+      <h2>McLaren</h2>
+      <p>A legacy of style and speed on the track.</p>
+    </div>
+    <div class="card" onclick="document.getElementById('popup-williams').style.display='flex'">
+      <img src="williams.webp" alt="Williams">
+      <h2>Williams</h2>
+      <p>Rich history and relentless pursuit of performance.</p>
+    </div>
+    <div class="card" onclick="document.getElementById('popup-aston').style.display='flex'">
+      <img src="aston.webp" alt="Aston Martin">
+      <h2>Aston Martin</h2>
+      <p>Luxury, heritage, and performance redefined.</p>
+    </div>
+    <div class="card" onclick="document.getElementById('popup-haas').style.display='flex'">
+      <img src="haas.webp" alt="Haas">
+      <h2>Haas</h2>
+      <p>The American team pushing boundaries.</p>
+    </div>
+    <div class="card" onclick="document.getElementById('popup-alpine').style.display='flex'">
+      <img src="alpine.avif" alt="Alpine">
+      <h2>Alpine</h2>
+      <p>French engineering meets racing excellence.</p>
+    </div>
+    <div class="card" onclick="document.getElementById('popup-vcarb').style.display='flex'">
+      <img src="vcarb.jpg" alt="VCARB">
+      <h2>Visa Cash App RB</h2>
+      <p>French engineering meets racing excellence.</p>
+    </div>
+    <div class="card" onclick="document.getElementById('popup-stake').style.display='flex'">
+      <img src="stake.png" alt="Stake">
+      <h2>Stake</h2>
+      <p>Innovative partnerships on and off the track.</p>
+    </div>
+  </section>
+  <div id="popup-ferrari" class="popup">
+    <div class="popup-content">
+      <h2>Ferrari</h2>
+      <img src="ferrari.avif" alt="Ferrari Image 1">
+      <h3>Full Team Name: Scuderia Ferrari</h3>
+      <h3>Base: Maranello, Italy</h3>
+      <h3>Team Chief: Frédéric Vasseur</h3>
+      <h3>Technical Chief: Loic Serra / Enrico Gualtieri</h3>
+      <h3>Chassis: SF-24</h3>
+      <h3>Power Unit: Ferrari</h3>
+      <h3>First Team Entry: 1950</h3>
+      <h3>World Championships: 16</h3>
+      <h3>Highest Race Finish: 1 (x248)</h3>
+      <h3>Pole Positions: 252</h3>
+      <h3>Fastest Laps: 262</h3>
+      <button class="close-btn" onclick="this.parentElement.parentElement.style.display='none'">Close</button>
+    </div>
+  </div>
+  <div id="popup-mercedes" class="popup">
+    <div class="popup-content">
+      <h2>Mercedes</h2>
+      <img src="mercedes.avif" alt="Mercedes Image 1">
+      <h3>Full Team Name: Mercedes-AMG PETRONAS F1 Team</h3>
+      <h3>Base: Brackley, United Kingdom</h3>
+      <h3>Team Chief: Toto Wolff</h3>
+      <h3>Technical Chief: James Allison</h3>
+      <h3>Chassis: W15</h3>
+      <h3>Power Unit: Mercedes</h3>
+      <h3>First Team Entry: 1970</h3>
+      <h3>World Championships: 8</h3>
+      <h3>Highest Race Finish: 1 (x119)</h3>
+      <h3>Pole Positions: 131</h3>
+      <h3>Fastest Laps: 100</h3>
+      <button class="close-btn" onclick="this.parentElement.parentElement.style.display='none'">Close</button>
+    </div>
+  </div>
+  <div id="popup-redbull" class="popup">
+    <div class="popup-content">
+      <h2>Red Bull Racing</h2>
+      <img src="red-bull-racing.avif" alt="Red Bull Racing Image 1">
+      <h3>Full Team Name: Oracle Red Bull Racing</h3>
+      <h3>Base: Milton Keynes, United Kingdom</h3>
+      <h3>Team Chief: Christian Horner</h3>
+      <h3>Technical Chief: Pierre Waché</h3>
+      <h3>Chassis: RB20</h3>
+      <h3>Power Unit: Honda RBPT</h3>
+      <h3>First Team Entry: 1997</h3>
+      <h3>World Championships: 6</h3>
+      <h3>Highest Race Finish: 1 (x120)</h3>
+      <h3>Pole Positions: 106</h3>
+      <h3>Fastest Laps: 98</h3>
+      <button class="close-btn" onclick="this.parentElement.parentElement.style.display='none'">Close</button>
+    </div>
+  </div>
+  <div id="popup-mclaren" class="popup">
+    <div class="popup-content">
+      <h2>McLaren</h2>
+      <img src="mclaren.avif" alt="McLaren Image 1">
+      <h3>Full Team Name: McLaren Formula 1 Team</h3>
+      <h3>Base: Woking, United Kingdom</h3>
+      <h3>Team Chief: Andrea Stella</h3>
+      <h3>Technical Chief: Peter Prodromou / Neil Houldey</h3>
+      <h3>Chassis: MCL38</h3>
+      <h3>Power Unit: Mercedes</h3>
+      <h3>First Team Entry: 1966</h3>
+      <h3>World Championships: 8</h3>
+      <h3>Highest Race Finish: 1 (x188)</h3>
+      <h3>Pole Positions: 163</h3>
+      <h3>Fastest Laps: 170</h3>
+      <button class="close-btn" onclick="this.parentElement.parentElement.style.display='none'">Close</button>
+    </div>
+  </div>
+  <div id="popup-williams" class="popup">
+    <div class="popup-content">
+      <h2>Williams</h2>
+      <img src="williams.avif" alt="Williams Image 1">
+      <h3>Full Team Name: Williams Racing</h3>
+      <h3>Base: Grove, United Kingdom</h3>
+      <h3>Team Chief: James Vowles</h3>
+      <h3>Technical Chief: Pat Fry</h3>
+      <h3>Chassis: FW46</h3>
+      <h3>Power Unit: Mercedes</h3>
+      <h3>First Team Entry: 1978</h3>
+      <h3>World Championships: 9</h3>
+      <h3>Highest Race Finish: 1 (x114)</h3>
+      <h3>Pole Positions: 128</h3>
+      <h3>Fastest Laps: 133</h3>
+      <button class="close-btn" onclick="this.parentElement.parentElement.style.display='none'">Close</button>
+    </div>
+  </div>
+
+  <div id="popup-aston" class="popup">
+    <div class="popup-content">
+      <h2>Aston Martin</h2>
+      <img src="aston-martin.avif" alt="Aston Martin Image 1">
+      <h3>Full Team Name: Aston Martin Aramco F1 Team</h3>
+      <h3>Base: Silverstone, United Kingdom</h3>
+      <h3>Team Chief: Mike Krack</h3>
+      <h3>Technical Chief: Dan Fallows</h3>
+      <h3>Chassis: AMR24</h3>
+      <h3>Power Unit: Mercedes</h3>
+      <h3>First Team Entry: 2018</h3>
+      <h3>World Championships: 0</h3>
+      <h3>Highest Race Finish: 1 (x1)</h3>
+      <h3>Pole Positions: 1</h3>
+      <h3>Fastest Laps: 3</h3>
+      <button class="close-btn" onclick="this.parentElement.parentElement.style.display='none'">Close</button>
+    </div>
+  </div>
+  <div id="popup-haas" class="popup">
+    <div class="popup-content">
+      <h2>Haas</h2>
+      <img src="haas.avif" alt="Haas Image 1">
+      <h3>Full Team Name: MoneyGram Haas F1 Team</h3>
+      <h3>Base: Kannapolis, United States</h3>
+      <h3>Team Chief: Ayao Komatsu</h3>
+      <h3>Technical Chief: Andrea De Zordo</h3>
+      <h3>Chassis: VF-24</h3>
+      <h3>Power Unit: Ferrari</h3>
+      <h3>First Team Entry: 2016</h3>
+      <h3>World Championships: 0</h3>
+      <h3>Highest Race Finish: 4 (x1)</h3>
+      <h3>Pole Positions: 1</h3>
+      <h3>Fastest Laps: 2</h3>
+      <button class="close-btn" onclick="this.parentElement.parentElement.style.display='none'">Close</button>
+    </div>
+  </div>
+  <div id="popup-alpine" class="popup">
+    <div class="popup-content">
+      <h2>Alpine</h2>
+      <img src="alpine (1).avif" alt="Alpine Image 1">
+      <h3>Full Team Name: MoneyGram Haas F1 Team</h3>
+      <h3>Base: Kannapolis, United States</h3>
+      <h3>Team Chief: Ayao Komatsu</h3>
+      <h3>Technical Chief: Andrea De Zordo</h3>
+      <h3>Chassis: VF-24</h3>
+      <h3>Power Unit: Ferrari</h3>
+      <h3>First Team Entry: 2016</h3>
+      <h3>World Championships: 0</h3>
+      <h3>Highest Race Finish: 4 (x1)</h3>
+      <h3>Pole Positions: 1</h3>
+      <h3>Fastest Laps: 2</h3>
+      <button class="close-btn" onclick="this.parentElement.parentElement.style.display='none'">Close</button>
+    </div>
+  </div>
+  <div id="popup-vcarb" class="popup">
+    <div class="popup-content">
+      <h2>Visa Cash App RB</h2>
+      <img src="rb.avif" alt="vcarb Image 1">
+      <h3>Full Team Name: Visa Cash App RB Formula One Team</h3>
+      <h3>Base: Faenza, Italy</h3>
+      <h3>Team Chief: Laurent Mekies</h3>
+      <h3>Technical Chief: Jody Egginton</h3>
+      <h3>Chassis: VCARB 01</h3>
+      <h3>Power Unit: Honda RBPT</h3>
+      <h3>First Team Entry: 1985</h3>
+      <h3>World Championships: 0</h3>
+      <h3>Highest Race Finish: 1 (x2)</h3>
+      <h3>Pole Positions: 1</h3>
+      <h3>Fastest Laps: 4</h3>
+      <button class="close-btn" onclick="this.parentElement.parentElement.style.display='none'">Close</button>
+    </div>
+  </div>
+  <div id="popup-stake" class="popup">
+    <div class="popup-content">
+      <h2>Stake</h2>
+      <img src="kick-sauber.avif" alt="Stake Image 1">
+      <h3>Full Team Name: Stake F1 Team Kick Sauber</h3>
+      <h3>Base: Hinwil, Switzerland</h3>
+      <h3>Team Chief: Alessandro Alunni Bravi</h3>
+      <h3>Technical Chief: James Key</h3>
+      <h3>Chassis: C44</h3>
+      <h3>Power Unit: Ferrari</h3>
+      <h3>First Team Entry: 1993</h3>
+      <h3>World Championships: 0</h3>
+      <h3>Highest Race Finish: 1 (x1)</h3>
+      <h3>Pole Positions: 1</h3>
+      <h3>Fastest Laps: 7</h3>
+      <button class="close-btn" onclick="this.parentElement.parentElement.style.display='none'">Close</button>
+    </div>
+  </div>
+  <footer>
+    <p>&copy; 2024 Formula 1 Website | Designed by Sanjay VG</p>
+  </footer>
+</body>
+</html>

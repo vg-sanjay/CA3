@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver Standings</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1c1c1c;
+            color: white;
+            font-family: 'Courier New', monospace;
+        }
+    nav {
+      background-color: #121212;
+      padding: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    }
+
+    nav a {
+      color: #FF003D;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: bold;
+      font-size: 25px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+        table {
+            width: 90%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border: none;
+        }
+        th {
+            background-color: #121212;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #2c2c2c;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 100;
+            font-size: 15px;
+        }
+        .popup h2 {
+            margin: 0 0 10px 0;
+        }
+        .close {
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            color: #FF003D;
+            cursor: pointer;
+        }
+        .popup:target {
+            display: block;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(95, 11, 11, 0.8);
+            display: none;
+            z-index: 50;
+        }
+        .overlay:target {
+            display: block;
+        }
+        a {
+            color: white; 
+            text-decoration: none;
+        }
+        
+        .hero {
+      display: flex;
+      justify-content: center;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="CA3.1.html">HOME</a>
+        <a href="CA3.2.html">LIVE LEADERBOARD</a>
+        <a href="CA3.3.html">FIA</a>
+        <a href="CA3.4.html">RACE CALENDAR</a>
+      </nav>
+      <div class="hero">
+         <h1>Driver Standings 2024</h1>
+     </div>
+    <table>
+        <thead>
+            <tr>
+                <th>POS</th>
+                <th>DRIVER</th>
+                <th>No.</th>
+                <th>TEAM</th>
+                <th>PTS</th>
+                <th>MORE INFO</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background-color: #011C31;">
+                <td>1</td>
+                <td>Max Verstappen</td>
+                <td>1/33</td>
+                <td>Red Bull Racing</td>
+                <td>354</td>
+                <td><a href="#max-popup">Details</a></td>
+            </tr>
+            <tr style="background-color: #F58229;">
+                <td>2</td>
+                <td>Lando Norris</td>
+                <td>4</td>
+                <<td>McLaren Formula 1 Team</td>
+                <td>297</td>
+                <td><a href="#lando-popup">Details</a></td>
+            </tr>
+            <tr style="background-color: #E80020;">
+                <td>3</td>
+                <td>Charles Leclerc</td>
+                <td>16</td>
+                <td>Scuderia Ferrari</td>
+                <td>275</td>
+                <td><a href="#charles-popup">Details</a></td>
+            </tr>
+            <tr style="background-color: #F58229;">
+                <td>4</td>
+                <td>Oscar Piastri</td>
+                <td>81</td>
+                <td>McLaren Formula 1 Team</td>
+                <td>247</td>
+                <td><a href="#oscar-popup">Details</a></td>
+            </tr>
+            <tr style="background-color: #E80020;">
+                <td>5</td>
+                <td>Carlos Sainz</td>
+                <td>55</td>
+                <td>Scuderia Ferrari</td>
+                <td>215</td>
+                <td><a href="#carlos-popup">Details</a></td>
+            </tr>
+            <tr style="background-color: #23dcbd;">
+                <td>6</td>
+                <td>Lewis Hamilton</td>
+                <td>44</td>
+                <td>Mercedes-AMG PETRONAS F1 Team</td>
+                <td>177</td>
+                <td><a href="#hamilton-popup">Details</a></td>
+            </tr>
+            <tr style="background-color: #23dcbd;">
+                <td>7</td>
+                <td>George Russell</td>
+                <td>63</td>
+                <td>Mercedes-AMG PETRONAS F1 Team</td>
+                <td>167</td>
+                <td><a href="#russell-popup">Details</a></td>
+            </tr>
+            <tr style="background-color: #011C31;">
+                <td>8</td>
+                <td>Sergio Perez</td>
+                <td>11</td>
+                <td>Red Bull Racing</td>
+                <td>150</td>
+                <td><a href="#perez-popup">Details</a></td>
+            </tr>
+            <tr style="background-color: #01574D;">
+                <td>9</td>
+                <td>Fernando Alonso</td>
+                <td>14</td>
+                <td>Aston Martin Aramco F1 Team</td>
+                <td>62</td>
+                <td><a href="#alonso-popup">Details</a></td>
+            </tr>
+            <tr style="background-color: #B6BABD;">
+                <td>10</td>
+                <td>Nico Hulkenberg</td>
+                <td>27</td>
+                <td>MoneyGram Haas F1 Team</td>
+                <td>29</td>
+                <td><a href="#Nico-popup">Details</a></td>
+            </tr>
+            <tr style="background-color: #01574D;">
+                <td>11</td>
+                <td>Lance Stroll</td>
+                <td>18</td>
+                <td>Aston Martin Aramco F1 Team</td>
+                <td>24</td>
+                <td><a href="#Lance-popup">Details</a></td>
+            </tr>
+            <tr style="background-color: #1635CE;">
+                <td>12</td>
+                <td>Yuki Tsunoda</td>
+                <td>22</td>
+                <td>Visa Cash App RB Formula One Team</td>
+                <td>22</td>
+                <td><a href="#Yuki-popup">Details</a></td>
+            </tr>
+            <tr style="background-color: #01A1E0;">
+                <td>13</td>
+                <td>Alexander Albon</td>
+                <td>23</td>
+                <td>Williams Racing</td>
+                <td>12</td>
+                <td><a href="#Alexander-popup">Details</a></td>
+            </tr>
+            <tr style="background-color: #1635CE;">
+                <td>14</td>
+                <td>Daniel Ricciardo</td>
+                <td>3</td>
+                <td>Visa Cash App RB Formula One Team</td>
+                <td>12</td>
+                <td><a href="#Daniel-popup">Details</a></td>
+            </tr>  
+            <tr style="background-color: #B6BABD;">
+                <td>15</td>
+                <td>Kevin Magnussen</td>
+                <td>20</td>
+                <td>MoneyGram Haas F1 Team</td>
+                <td>8</td>
+                <td><a href="#Kevin-popup">Details</a></td>
+            </tr>
+            <tr style="background-color: #F294C6;">
+                <td>16</td>
+                <td>Pierre Gasly</td>
+                <td>10</td>
+                <td>BWT Alpine F1 Team</td>
+                <td>8</td>
+                <td><a href="#Pierre-popup">Details</a></td>
+            </tr>
+            <tr style="background-color: #01A1E0;">
+                <td>17</td>
+                <td>Franco Colapinto</td>
+                <td>43</td>
+                <td>Williams Racing</td>
+                <td>5</td>
+                <td><a href="#Franco-popup">Details</a></td>
+            </tr>
+            <tr style="background-color: #F294C6;">
+                <td>18</td>
+                <td>Esteban Ocon</td>
+                <td>31</td>
+                <td>BWT Alpine F1 Team</td>
+                <td>5</td>
+                <td><a href="#Esteban-popup">Details</a></td>
+            </tr>
+            <tr style="background-color: #1635CE;">
+                <td>19</td>
+                <td>Liam Lawson</td>
+                <td>30</td>
+                <td>Visa Cash App RB Formula One Team</td>
+                <td>2</td>
+                <td><a href="#Liam-popup">Details</a></td>
+            </tr>
+            <tr style="background-color: #09CF32;">
+                <td>20</td>
+                <td>Valtteri Bottas</td>
+                <td>77</td>
+                <td>Stake F1 Team Kick Sauber</td>
+                <td>0</td>
+                <td><a href="#Valtteri-popup">Details</a></td>
+            </tr>
+            <tr style="background-color: #09CF32;">
+                <td>21</td>
+                <td>Zhou Guanyu</td>
+                <td>24</td>
+                <td>Stake F1 Team Kick Sauber</td>
+                <td>0</td>
+                <td><a href="#Zhou-popup">Details</a></td>
+            </tr>
+            <tr style="background-color: #01A1E0;">
+                <td>22</td>
+                <td>Logan Sargeant</td>
+                <td>2</td>
+                <td>Williams Racing</td>
+                <td>0</td>
+                <td><a href="#Logan-popup">Details</a></td>
+            </tr>
+                      
+        </tbody>
+    </table>
+    <div id="max-popup" class="popup">
+        <div class="overlay" id="overlay"></div>
+        <h2>Max Verstappen</h2>
+        <img src="maxver01.avif" alt="Max Verstappen" width="200">
+        <p>Team: Red Bull Racing</p>
+        <p>Country: Netherlands</p>
+        <p>Podiums: 110</p>
+        <p>Points: 2940.5</p>
+        <p>Grands Prix entered: 204</p>
+        <p>World Championships: 3</p>
+        <p>Highest race finish: 1 (x61)</p>
+        <p>Highest grid position: 1</p>
+        <p>Date of birth: 30/09/1997</p>
+        <p>Place of birth: Hasselt, Belgium</p>
+
+        <a href="#!" class="close" onclick="document.getElementById('max-popup').style.display='none';">Close</a>
+    </div>
+
+    <div id="lando-popup" class="popup">
+        <div class="overlay" id="overlay"></div>
+        <h2>Lando Norris</h2>
+        <img src="lannor01.avif" alt="Lando Norris" width="200">
+        <p>Team: McLaren</p>
+        <p>Country: United Kingdom</p>
+        <p>Podiums: 24</p>
+        <p>Points: 930</p>
+        <p>Grands Prix entered: 123</p>
+        <p>World Championships: 0</p>
+        <p>Highest race finish: 1 (x3)</p>
+        <p>Highest grid position: 1</p>
+        <p>Date of birth: 13/11/1999</p>
+        <p>Place of birth: Bristol, England</p>
+
+        <a href="#!" class="close" onclick="document.getElementById('lando-popup').style.display='none';">Close</a>
+    </div>
+
+    <div id="charles-popup" class="popup">
+        <div class="overlay" id="overlay"></div>
+        <h2>Charles Leclerc</h2>
+        <img src="lec.avif" alt="Charles Leclerc" width="200">
+        <p>Team: Ferrari</p>
+        <p>Country: Monaco</p>
+        <p>Podiums: 40</p>
+        <p>Points: 1349</p>
+        <p>Grands Prix entered: 144</p>
+        <p>World Championships: 0</p>
+        <p>Highest race finish: 1 (x8)</p>
+        <p>Highest grid position: 1</p>
+        <p>Date of birth: 16/10/1997</p>
+        <p>Place of birth: Monte Carlo, Monaco</p>
+
+        <a href="#!" class="close" onclick="document.getElementById('charles-popup').style.display='none';">Close</a>
+    </div>
+
+    <div id="oscar-popup" class="popup">
+        <div class="overlay" id="overlay"></div>
+        <h2>Oscar Piastri</h2>
+        <img src="oscpia01.avif" alt="Oscar Piastri" width="200">
+        <p>Team: McLaren</p>
+        <p>Country: Australia</p>
+        <p>Podiums: 9</p>
+        <p>Points: 344</p>
+        <p>Grands Prix entered: 41</p>
+        <p>World Championships: 0</p>
+        <p>Highest race finish: 1 (x2)</p>
+        <p>Highest grid position: 2</p>
+        <p>Date of birth: 06/04/2001</p>
+        <p>Place of birth: Melbourne, Victoria</p>
+
+        <a href="#!" class="close" onclick="document.getElementById('oscar-popup').style.display='none';">Close</a>
+    </div>
+
+    <div id="carlos-popup" class="popup">
+        <div class="overlay" id="overlay"></div>
+        <h2>Carlos Sainz</h2>
+        <img src="car.avif" alt="Carlos Sainz" width="200">
+        <p>Team: Ferrari</p>
+        <p>Country: Spain</p>
+        <p>Podiums: 24</p>
+        <p>Points: 1197.5</p>
+        <p>Grands Prix entered: 203</p>
+        <p>World Championships: 0</p>
+        <p>Highest race finish: 1 (x3)</p>
+        <p>Highest grid position: 1</p>
+        <p>Date of birth: 01/09/1994</p>
+        <p>Place of birth: Madrid, Spain</p>
+
+        <a href="#!" class="close" onclick="document.getElementById('carlos-popup').style.display='none';">Close</a>
+    </div>
+
+    <div id="hamilton-popup" class="popup">
+        <div class="overlay" id="overlay"></div>
+        <h2>Lewis Hamilton</h2>
+        <img src="lewham01.avif" alt="Lewis Hamilton" width="200">
+        <p>Team: Mercedes</p>
+        <p>Country: United Kingdom</p>
+        <p>Podiums: 201</p>
+        <p>Points: 4816.5</p>
+        <p>Grands Prix entered: 351</p>
+        <p>World Championships: 7</p>
+        <p>Highest race finish: 1 (x105)</p>
+        <p>Highest grid position: 1</p>
+        <p>Date of birth: 07/01/1985</p>
+        <p>Place of birth: Stevenage, England</p>
+
+        <a href="#!" class="close" onclick="document.getElementById('hamilton-popup').style.display='none';">Close</a>
+    </div>
+
+    <div id="russell-popup" class="popup">
+        <div class="overlay" id="overlay"></div>
+        <h2>George Russell</h2>
+        <img src="georus01.avif" alt="George Russell" width="200">
+        <p>Team: Mercedes</p>
+        <p>Country: United Kingdom</p>
+        <p>Podiums: 14</p>
+        <p>Points: 636</p>
+        <p>Grands Prix entered: 123</p>
+        <p>World Championships: 0</p>
+        <p>Highest race finish: 1 (x2)</p>
+        <p>Highest grid position: 1</p>
+        <p>Date of birth: 15/02/1998</p>
+        <p>Place of birth: King's Lynn, England</p>
+
+        <a href="#!" class="close" onclick="document.getElementById('russell-popup').style.display='none';">Close</a>
+    </div>
+
+    <div id="perez-popup" class="popup">
+        <div class="overlay" id="overlay"></div>
+        <h2>Sergio Perez</h2>
+        <img src="serper01.avif" alt="Sergio Perez" width="200">
+        <p>Team: Red Bull Racing</p>
+        <p>Country: Mexico</p>
+        <p>Podiums: 39</p>
+        <p>Points: 1636</p>
+        <p>Grands Prix entered: 277</p>
+        <p>World Championships: 0</p>
+        <p>Highest race finish: 1 (x6)</p>
+        <p>Highest grid position: 1</p>
+        <p>Date of birth: 26/01/1990</p>
+        <p>Place of birth: Guadalajara, Mexico</p>
+
+        <a href="#!" class="close" onclick="document.getElementById('perez-popup').style.display='none';">Close</a>
+    </div>
+
+    <div id="alonso-popup" class="popup">
+        <div class="overlay" id="overlay"></div>
+        <h2>Fernando Alonso</h2>
+        <img src="feralo01.avif" alt="Fernando Alonso" width="200">
+        <p>Team: Aston Martin</p>
+        <p>Country: Spain</p>
+        <p>Podiums: 106</p>
+        <p>Points: 2329</p>
+        <p>Grands Prix entered: 399</p>
+        <p>World Championships: 2</p>
+        <p>Highest race finish: 1 (x32)</p>
+        <p>Highest grid position: 1</p>
+        <p>Date of birth: 29/07/1981</p>
+        <p>Place of birth: Oviedo, Spain</p>
+
+        <a href="#!" class="close" onclick="document.getElementById('alonso-popup').style.display='none';">Close</a>
+    </div>
+    <div id="Nico-popup" class="popup">
+        <div class="overlay" id="overlay"></div>
+        <h2>Nico Hulkenberg</h2>
+        <img src="nichul01.avif"width="200">
+        <p>Team: Haas</p>
+        <p>Country: Germany</p>
+        <p>Podiums: 0</p>
+        <p>Points: 559</p>
+        <p>Grands Prix entered: 225</p>
+        <p>World Championships: 0</p>
+        <p>Highest race finish: 4 (x3)</p>
+        <p>Highest grid position: 1</p>
+        <p>Date of birth: 19/08/1987</p>
+        <p>Place of birth: Emmerich am Rhein, Germany</p>
+
+        <a href="#!" class="close" onclick="document.getElementById('hulkenberg-popup').style.display='none';">Close</a>
+    </div>
+    <div id="Lance-popup" class="popup">
+        <div class="overlay" id="overlay"></div>
+        <h2>Lance Stroll</h2>
+        <img src="lanstr01.avif"width="200">
+        <p>Team: Aston Martin</p>
+        <p>Country: Canada</p>
+        <p>Podiums: 3</p>
+        <p>Points: 292</p>
+        <p>Grands Prix entered: 162</p>
+        <p>World Championships: 0</p>
+        <p>Highest race finish: 3 (x3)</p>
+        <p>Highest grid position: 1</p>
+        <p>Date of birth: 29/10/1998</p>
+        <p>Place of birth: Montreal, Canada</p>
+
+        <a href="#!" class="close" onclick="document.getElementById('hulkenberg-popup').style.display='none';">Close</a>
+    </div>
+    <div id="Yuki-popup" class="popup">
+        <div class="overlay" id="overlay"></div>
+        <h2>Yuki Tsuno</h2>
+        <img src="yuktsu01.avif"width="200">
+        <p>Team: RB</p>
+        <p>Country: Japan</p>
+        <p>Podiums: 0</p>
+        <p>Points: 83</p>
+        <p>Grands Prix entered: 85</p>
+        <p>World Championships: 0</p>
+        <p>Highest race finish: 4 (x1)</p>
+        <p>Highest grid position: 6</p>
+        <p>Date of birth: 11/05/2000</p>
+        <p>Place of birth: Sagamihara, Japan</p>
+
+        <a href="#!" class="close" onclick="document.getElementById('hulkenberg-popup').style.display='none';">Close</a>
+    </div>
+    <div id="Alexander-popup" class="popup">
+        <div class="overlay" id="overlay"></div>
+        <h2>Alexander Albon</h2>
+        <img src="alealb01.avif"width="200">
+        <p>Team: Williams</p>
+        <p>Country: Thailand</p>
+        <p>Podiums: 2</p>
+        <p>Points: 240</p>
+        <p>Grands Prix entered: 100</p>
+        <p>World Championships: 0</p>
+        <p>Highest race finish: 3 (x2)</p>
+        <p>Highest grid position: 4</p>
+        <p>Date of birth: 23/03/1996</p>
+        <p>Place of birth: London, England</p>
+
+        <a href="#!" class="close" onclick="document.getElementById('hulkenberg-popup').style.display='none';">Close</a>
+    </div>
+    <div id="Daniel-popup" class="popup">
+        <div class="overlay" id="overlay"></div>
+        <h2>Daniel Ricciardo</h2>
+        <img src="danric01.avif"width="200">
+        <p>Team: RB</p>
+        <p>Country: Australia</p>
+        <p>Podiums: 32</p>
+        <p>Points: 1233</p>
+        <p>Grands Prix entered: 231</p>
+        <p>World Championships: 0</p>
+        <p>Highest race finish: 1 (x8)</p>
+        <p>Highest grid position: 1</p>
+        <p>Date of birth: 01/07/1989</p>
+        <p>Place of birth: Perth, Australia</p>
+
+        <a href="#!" class="close" onclick="document.getElementById('hulkenberg-popup').style.display='none';">Close</a>
+    </div>
+    <div id="Kevin-popup" class="popup">
+        <div class="overlay" id="overlay"></div>
+        <h2>Kevin Magnussen</h2>
+        <img src="kevmag01.avif"width="200">
+        <p>Team: Haas</p>
+        <p>Country: Denmark</p>
+        <p>Podiums: 1</p>
+        <p>Points: 194</p>
+        <p>Grands Prix entered: 182</p>
+        <p>World Championships: 0</p>
+        <p>Highest race finish: 2 (x1)</p>
+        <p>Highest grid position: 4</p>
+        <p>Date of birth: 05/10/1992</p>
+        <p>Place of birth: Roskilde, Denmark</p>
+
+        <a href="#!" class="close" onclick="document.getElementById('hulkenberg-popup').style.display='none';">Close</a>
+    </div>
+    <div id="Pierre-popup" class="popup">
+        <div class="overlay" id="overlay"></div>
+        <h2>Pierre Gasly</h2>
+        <img src="piegas01.avif"width="200">
+        <p>Team: Alpine</p>
+        <p>Country: France</p>
+        <p>Podiums: 4</p>
+        <p>Points: 402</p>
+        <p>Grands Prix entered: 149</p>
+        <p>World Championships: 0</p>
+        <p>Highest race finish: 1 (x1)</p>
+        <p>Highest grid position: 2</p>
+        <p>Date of birth: 07/02/1996</p>
+        <p>Place of birth: Rouen, France</p>
+
+        <a href="#!" class="close" onclick="document.getElementById('hulkenberg-popup').style.display='none';">Close</a>
+    </div>
+    <div id="Franco-popup" class="popup">
+        <div class="overlay" id="overlay"></div>
+        <h2>Franco Colapinto</h2>
+        <img src="fracol01.avif"width="200">
+        <p>Team: Williams</p>
+        <p>Country: Argentina</p>
+        <p>Podiums: 0</p>
+        <p>Points: 5</p>
+        <p>Grands Prix entered: 4</p>
+        <p>World Championships: 0</p>
+        <p>Highest race finish: 8 (x1)</p>
+        <p>Highest grid position: 8</p>
+        <p>Date of birth: 27/05/2003</p>
+        <p>Place of birth: Buenos Aires, Argentina</p>
+
+        <a href="#!" class="close" onclick="document.getElementById('hulkenberg-popup').style.display='none';">Close</a>
+    </div>
+    <div id="Esteban-popup" class="popup">
+        <div class="overlay" id="overlay"></div>
+        <h2>Esteban Ocon</h2>
+        <img src="estoco01.avif"width="200">
+        <p>Team: Alpine</p>
+        <p>Country: France</p>
+        <p>Podiums: 4</p>
+        <p>Points: 402</p>
+        <p>Grands Prix entered: 149</p>
+        <p>World Championships: 0</p>
+        <p>Highest race finish: 1 (x1)</p>
+        <p>Highest grid position: 2</p>
+        <p>Date of birth: 07/02/1996</p>
+        <p>Place of birth: Rouen, France</p>
+
+        <a href="#!" class="close" onclick="document.getElementById('hulkenberg-popup').style.display='none';">Close</a>
+    </div>
+    <div id="Liam-popup" class="popup">
+        <div class="overlay" id="overlay"></div>
+        <h2>Liam Laws</h2>
+        <img src="lawson-cutout-v2.png"width="200">
+        <p>Team: RB</p>
+        <p>Country: New Zealand</p>
+        <p>Podiums: 0</p>
+        <p>Points: 4</p>
+        <p>Grands Prix entered: 6</p>
+        <p>World Championships: 0</p>
+        <p>Highest race finish: 9 (x2)</p>
+        <p>Highest grid position: 10</p>
+        <p>Date of birth: 11/02/2002</p>
+        <p>Place of birth: Hastings, New Zealand</p>
+
+        <a href="#!" class="close" onclick="document.getElementById('hulkenberg-popup').style.display='none';">Close</a>
+    </div>
+    <div id="Valtteri-popup" class="popup">
+        <div class="overlay" id="overlay"></div>
+        <h2>Valtteri Bottas</h2>
+        <img src="valbot01.avif"width="200">
+        <p>Team: Kick Sauber</p>
+        <p>Country: Finland</p>
+        <p>Podiums: 67</p>
+        <p>Points: 1797</p>
+        <p>Grands Prix entered: 241</p>
+        <p>World Championships: 0</p>
+        <p>Highest race finish: 1 (x10)</p>
+        <p>Highest grid position: 1</p>
+        <p>Date of birth: 28/08/1989</p>
+        <p>Place of birth: Nastola, Finland</p>
+
+        <a href="#!" class="close" onclick="document.getElementById('hulkenberg-popup').style.display='none';">Close</a>
+    </div>
+    <div id="Zhou-popup" class="popup">
+        <div class="overlay" id="overlay"></div>
+        <h2>Zhou Guanyu</h2>
+        <img src="guazho01.avif"width="200">
+        <p>Team: Kick Sauber</p>
+        <p>Country: China</p>
+        <p>Podiums: 0</p>
+        <p>Points: 12</p>
+        <p>Grands Prix entered: 63</p>
+        <p>World Championships: 0</p>
+        <p>Highest race finish: 8 (x1)</p>
+        <p>Highest grid position: 5</p>
+        <p>Date of birth: 30/05/1999</p>
+        <p>Place of birth: Shanghai, China</p>
+
+        <a href="#!" class="close" onclick="document.getElementById('hulkenberg-popup').style.display='none';">Close</a>
+    </div>
+    <div id="Logan-popup" class="popup">
+        <div class="overlay" id="overlay"></div>
+        <h2>Logan Sargeant</h2>
+        <img src="logsar01.avif"width="200">
+        <p>Team: Williams</p>
+        <p>Country: USA</p>
+        <p>Podiums: 0</p>
+        <p>Points: 0</p>
+        <p>Grands Prix entered: 20</p>
+        <p>World Championships: 0</p>
+        <p>Highest race finish: 8 (x1)</p>
+        <p>Highest grid position: 12</p>
+        <p>Date of birth: 30/04/2001</p>
+        <p>Place of birth: Fort Lauderdale, Florida, USA</p>
+
+        <a href="#!" class="close" onclick="document.getElementById('hulkenberg-popup').style.display='none';">Close</a>
+    </div>
+</body>
+<footer>
+    <p>&copy; 2024 Formula 1 Website | Designed by Sanjay VG</p>
+  </footer>
+</html>
